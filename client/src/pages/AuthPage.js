@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {useHttp} from '../hooks/http.hook'
 import {useMessage} from '../hooks/message.hook'
 import {AuthContext} from '../context/AuthContext'
+import {Form,Button} from "react-bootstrap";
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext)
@@ -30,41 +31,39 @@ export const AuthPage = () => {
   }
 
   return (
-      <form>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-                className="form-control"
-                type="text"
-                name="email"
-                value={form.email}
-                onChange={changeHandler}
-            />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-                className="form-control"
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={changeHandler}
-            />
-        </div>
-        <button
 
-            className="btn btn-primary"
-            style={{marginRight: 10}}
-            disabled={loading}
-            onClick={loginHandler}
-        >
-          Войти
-        </button>
-      </form>
+      <Form style={{margin:'10px'}}>
+          <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                  className="form-control"
+                  type="text"
+                  name="email"
+                  value={form.email}
+                  onChange={changeHandler}
+              />
 
+          </Form.Group>
 
+          <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                  className="form-control"
+                  type="password"
+                  name="password"
+                  value={form.password}
+                  onChange={changeHandler}
+              />
 
-
+          </Form.Group>
+          <Button
+              variant="primary"
+                  className="btn btn-primary"
+                  disabled={loading}
+                  onClick={loginHandler}>
+              login
+          </Button>
+      </Form>
 
 
   )
